@@ -3,7 +3,7 @@ const initialState = {
 }
 
 const regisReducer = (state = initialState, action) => {
-    switch (action.state) {
+    switch (action.type) {
         case 'REGIS':
             return {
                 ...initialState,
