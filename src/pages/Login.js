@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navbar } from '../components/Navbar'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { logisAction } from '../redux/actions/loginAction'
+import { loginAction } from '../redux/actions/loginAction'
 import './Login.css'
 
 export const Login = () => {
@@ -27,7 +27,7 @@ export const Login = () => {
             email: em,
             password: pass
         }
-        dispatch(logisAction(payload))
+        dispatch(loginAction(payload))
       }
 
   return (
@@ -39,7 +39,7 @@ export const Login = () => {
                 <input onChange={inputEm} placeholder='Email'/>
                 <input onChange={inputPass} placeholder='Password'/>
                 <button onClick={handleLogin}>Log In</button>
-                {loginReducer.message.length ? <h1>{loginReducer.message}</h1> : null}
+                {loginReducer.isLogin.length ? <h1>Success To Log In</h1> : null}
             </div>
         </div>
     </div>
