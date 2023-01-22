@@ -39,7 +39,7 @@ export const Login = () => {
                 <input onChange={inputEm} placeholder='Email'/>
                 <input onChange={inputPass} placeholder='Password'/>
                 <button onClick={handleLogin}>Log In</button>
-                {loginReducer.isLogin.length ? <h1>Success To Log In</h1> : null}
+                {loginReducer.isLogin ? <h1>Success To Log In</h1> : null}
             </div>
         </div>
     </div>

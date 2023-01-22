@@ -9,7 +9,11 @@ const regisReducer = (state = initialState, action) => {
                 ...initialState,
                 message: action.payload,
             };            
-    
+        case 'REMOVE_MESSAGE':
+            return {
+                ...initialState,
+                message: action.payload
+            };
         default:
             return state;
     }

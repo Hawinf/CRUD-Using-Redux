@@ -11,4 +11,11 @@ export const regisAction = (payload) => (dispatch) => {
             console.log(res.statusText)
         })
         .catch((err) => console.log(err))
-}
+};
+
+// export const removeMessage = (payload) => (dispatch) => {
+//     dispatch({
+//         type: 'REMOVE_MESSAGE',
+//         payload: '',
+//     })
+// }

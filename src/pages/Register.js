@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Navbar } from '../components/Navbar'
 import { useState } from 'react';
@@ -13,6 +13,24 @@ export const Register = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    handleRedirect();
+  },[regisReducer.message]);
+
+  const handleRedirect = () => {
+    // setTimeout untuk membuat delay setelah menampilkan message
+    setTimeout(() => {
+      if (!!regisReducer.message.length) {
+        navigate('/login');
+      } 
+      // mengkosongkan state message supaya bisa mengakses halaman register
+      dispatch ({
+        type: 'REMOVE_MESSAGE',
+        payload: '',
+      });
+    }, 2000)
+  };
 
   const inputEmail = (e) => {
       setEmail(e.target.value);
