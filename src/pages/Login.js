@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navbar } from '../components/Navbar'
 import { useState } from 'react'
@@ -15,6 +15,33 @@ export const Login = () => {
     const [pass, setPass] = useState('')
     const navigate = useNavigate();
     const dispatch = useDispatch()
+
+    const [isLogin, setIsLogin] = useState(false);
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token === null) {
+            setIsLogin(false)
+        } else {
+            setIsLogin(true)
+        }
+    },[])
+
+    const handleRedirect = () => {
+        setTimeout(() => {
+            if (loginReducer.message === true) {
+                navigate('/')
+            }
+        }, 2000)
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login')
+    }
+
+    useEffect(() => {
+        handleRedirect()
+    }, [loginReducer.message])
 
     const inputEm = (e) => {
         setEm(e.target.value)

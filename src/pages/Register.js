@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Navbar } from '../components/Navbar'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Register.css';
 import { regisAction } from '../redux/actions/regisAction';
+import './Register.css';
 
 export const Register = () => {
   const {regisReducer} = useSelector(state => state)

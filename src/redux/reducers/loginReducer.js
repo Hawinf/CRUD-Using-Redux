@@ -1,7 +1,7 @@
 import { Action } from "@remix-run/router"
 
 const inisialState = {
-    isLogin: false
+    message: false
 }
 
 const loginReducer = (state = inisialState, Action) => {
@@ -9,8 +9,13 @@ const loginReducer = (state = inisialState, Action) => {
         case 'LOGIN':
             return {
                 ...inisialState,
-                isLogin: Action.payload
+                message: Action.payload
             };
+        case 'LOGOUT':
+            return {
+                ...inisialState,
+                message: Action.payload
+            }
             default:
                 return state;
     }
