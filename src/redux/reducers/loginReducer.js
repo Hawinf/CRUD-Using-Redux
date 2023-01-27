@@ -1,7 +1,9 @@
 import { Action } from "@remix-run/router"
 
 const inisialState = {
-    message: false
+    message: false,
+    isLogin: false,
+    loading: true,
 }
 
 const loginReducer = (state = inisialState, Action) => {
@@ -15,6 +17,12 @@ const loginReducer = (state = inisialState, Action) => {
             return {
                 ...inisialState,
                 message: Action.payload
+            }
+        case 'CHECK_TOKEN':
+            return {
+                ...inisialState,
+                isLogin: Action.payload.isLogin,
+                loading: Action.payload.loading,
             }
             default:
                 return state;

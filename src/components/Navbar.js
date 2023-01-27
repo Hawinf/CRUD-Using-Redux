@@ -13,6 +13,9 @@ export const Navbar = () => {
         <Link to='/register'>
             <a>Register</a>
         </Link>
+        <Link to='/discovery'>
+            <a>Discover</a>
+        </Link>
     </div>
   )
 }
