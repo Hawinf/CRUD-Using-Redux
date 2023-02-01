@@ -29,14 +29,18 @@ export const CarList = () => {
   return (
     <div>
        <h1>This Is Car List Page</h1>
-        {carReducers.carsData.length && carReducers.carsData.map((item, i) => {
-            <div key={i}>
-                <img src={item.image} />
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-                <p>{item.category}</p>
-            </div>
-        })}
+        {
+            !!carReducers.carsData.length ? carReducers.carsData.map((item, i) => {
+                return (
+                    <div key={i}>
+                        <img  src={item.image}/>
+                        <p>{item.name}</p>
+                        <p>{item.price}</p>
+                        <p>{item.category}</p>
+                    </div>
+                )
+            }) : null
+        } 
     </div>
   )
 }
