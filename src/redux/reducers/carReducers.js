@@ -3,6 +3,7 @@ import { Action } from "@remix-run/router"
 const initialState = {
     carsData : [],
     carData : {},
+    message: ''
 }
 
 const carReducers = (state = initialState, Action) => {
@@ -16,6 +17,11 @@ const carReducers = (state = initialState, Action) => {
             return {
                 ...initialState,
                 carData : Action.payload
+            }
+        case 'DELETE':
+            return {
+                ...initialState,
+                message: Action.payload
             }
         default:
             return state

@@ -16,6 +16,9 @@ export const Navbar = () => {
         <Link to='/discovery'>
             <a>Discover</a>
         </Link>
+        <Link to='/car-list'>
+            <a>Car List</a>
+        </Link>
     </div>
   )
 }

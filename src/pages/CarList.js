@@ -1,17 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCars } from '../redux/actions/carAction'
+import { useParams } from 'react-router-dom';
+import { getCars, handleDelete } from '../redux/actions/carAction'
 
 export const CarList = () => {
 
     const dispatch = useDispatch();
+    const {id} = useParams()
 
     const {carReducers} = useSelector(state => state)
-    console.log(carReducers, 'this is results of state')
+    // console.log(carReducers, 'this is results of state')
 
     useEffect(() => {
         getAllCars()
     },[])
+
+    useEffect(() => {
+        getAllCars()
+    },[carReducers.message])
 
     const getAllCars = () => {
         const token = localStorage.getItem('token');
@@ -24,6 +30,9 @@ export const CarList = () => {
         dispatch(getCars(configurasi))
     }
 
+    const handleDeleteCar = (id) => {
+        dispatch(handleDelete(id))
+    }
     
 
   return (
@@ -37,9 +46,10 @@ export const CarList = () => {
                         <p>{item.name}</p>
                         <p>{item.price}</p>
                         <p>{item.category}</p>
+                        <button onClick={() => handleDeleteCar(item, id)}>Delete</button>
                     </div>
                 )
-            }) : null
+            }) : (null)
         } 
     </div>
   )

@@ -7,6 +7,7 @@ import { Register } from './pages/Register';
 import { ProtectedRoute } from './hoc/ProtectedRoute';
 import { DiscoveryPage } from './pages/Discovery';
 import { CarList } from './pages/CarList';
+import { CarDetail } from './pages/CarDetail';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
             <Route path='/discovery' element={<DiscoveryPage />} />
             <Route path='/car-list' element={<CarList />} />
+            <Route path='/detail-car' element={<CarDetail />} />
         </Route>
         <Route path='/' element={<Home/>} />
         <Route path='/login' element={<Login/>} />
