@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCars, handleDelete } from '../redux/actions/carAction'
 
 export const CarList = () => {
 
     const dispatch = useDispatch();
     const {id} = useParams()
+    
 
     const {carReducers} = useSelector(state => state)
     // console.log(carReducers, 'this is results of state')
@@ -32,12 +33,16 @@ export const CarList = () => {
 
     const handleDeleteCar = (id) => {
         dispatch(handleDelete(id))
+        
     }
     
 
   return (
     <div>
        <h1>This Is Car List Page</h1>
+       <Link to='/adding-new-car'>
+            <a>Add New Car</a>
+        </Link>
         {
             !!carReducers.carsData.length ? carReducers.carsData.map((item, i) => {
                 return (
@@ -46,7 +51,7 @@ export const CarList = () => {
                         <p>{item.name}</p>
                         <p>{item.price}</p>
                         <p>{item.category}</p>
-                        <button onClick={() => handleDeleteCar(item, id)}>Delete</button>
+                        <button onClick={() => handleDeleteCar(item.id)}>Delete</button>
                     </div>
                 )
             }) : (null)

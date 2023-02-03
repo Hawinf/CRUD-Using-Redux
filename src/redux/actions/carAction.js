@@ -40,3 +40,22 @@ export const handleDelete = (id) => dispatch => {
         })
         .catch((err) => console.log(err.message))
 }
+
+export const handleAddCar = (formData) => dispatch => {
+    const token = localStorage.getItem('token')
+    const config = {
+        headers: {
+            access_token: token
+        }
+    }
+    axios
+        .post('https://bootcamp-rent-cars.herokuapp.com/admin/car',formData, config)
+        .then((res) => {
+            console.log(res)
+            dispatch({
+                type: 'ADD_NEW_CAR',
+                payload: res.statusText
+            })
+        })
+        .catch((err) => console.log(err))
+}
