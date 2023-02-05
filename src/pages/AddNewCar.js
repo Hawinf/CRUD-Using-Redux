@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { handleAddCar } from '../redux/actions/carAction'
 
 export const AddNewCar = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const state = useSelector(state => state)
-    console.log(state)
+    console.log(state,'this is result of state')
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
@@ -32,13 +33,19 @@ export const AddNewCar = () => {
         const formData = new FormData();
             formData.append('name', name)
             formData.append('category', category)
-            formData.append('price,', price)
+            formData.append('price', price)
             formData.append('image', image)
 
-            // dispatch(handleAddCar(formData))
+            dispatch(handleAddCar(formData))
     }
 
+    useEffect(() => {
 
+    },[])
+
+    const handleRedirect = () => {
+        
+    }
 
   return (
     <div className='wrapper-addnewcar'>
