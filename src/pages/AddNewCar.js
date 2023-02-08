@@ -40,20 +40,27 @@ export const AddNewCar = () => {
     }
 
     useEffect(() => {
-
-    },[])
+        if (state.carReducers.message !== '') {
+            alert(state.carReducers.message)
+        }
+        handleRedirect()
+    },[state.carReducers.message])
 
     const handleRedirect = () => {
-        
+        setTimeout(() => {
+            if(state.carReducers.message !== ''){
+                navigate('/car-list')
+            }
+        }, 1000)
     }
 
   return (
     <div className='wrapper-addnewcar'>
         <h1>Add New Car Page</h1>
-        <input onClick={handleName} placeholder='Nama-Mobil'/>
-        <input onClick={handlePrice} placeholder='Harga'/>
+        <input onChange={handleName} placeholder='Nama-Mobil' type='text'/>
+        <input onChange={handlePrice} placeholder='Harga' type='number'/>
         <input onChange={handleImage} type='file'/>
-        <select onChange={handleCategory} placeholder='Kategory'>
+        <select onClick={handleCategory} placeholder='Kategory'>
             <option value='small'>
                 2 - 4 Orang
             </option>

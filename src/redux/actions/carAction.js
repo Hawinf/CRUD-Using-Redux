@@ -1,4 +1,7 @@
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+
 
 export const getCars = (configurasi) => (dispatch) => {
     // console.log('Action')
@@ -14,11 +17,23 @@ export const getCars = (configurasi) => (dispatch) => {
     })
 }
 
-export const getSingleCar = () => dispatch => {
-    dispatch({
-        type: 'GET_SINGLE_CAR',
-        payload: ''
-    })
+export const handleDetailCar = (id) => dispatch => {
+    const token = localStorage.getItem('token')
+    const config = {
+        headers: {
+            access_token: token,
+        }
+    }
+    axios
+        .get(`https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`, config)
+        .then((res) => {
+            console.log(res)
+            dispatch({
+                type: 'DETAIL_CAR',
+                payload: res.data
+            })
+        })
+        .catch((err) => console.log(err.message))
 }
 
 export const handleDelete = (id) => dispatch => {
@@ -52,10 +67,31 @@ export const handleAddCar = (formData) => dispatch => {
         .post('https://bootcamp-rent-cars.herokuapp.com/admin/car',formData, config)
         .then((res) => {
             console.log(res)
+           
             dispatch({
                 type: 'ADD_NEW_CAR',
                 payload: res.statusText
             })
         })
         .catch((err) => console.log(err))
+}
+
+export const handleEditCar = (id, formData) => dispatch => {
+    const token = localStorage.getItem('token')
+    const config = {
+        headers: {
+            access_token: token,
+        }
+    }
+
+    axios
+        .put(`https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`, formData, config)
+        .then((res) => {
+            console.log(res)
+            dispatch({
+                type: 'EDIT_CAR',
+                payload: res.statusText,
+            })
+        })
+        .catch((err) => console.log(err.message))
 }

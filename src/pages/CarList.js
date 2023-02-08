@@ -52,6 +52,18 @@ export const CarList = () => {
                         <p>{item.price}</p>
                         <p>{item.category}</p>
                         <button onClick={() => handleDeleteCar(item.id)}>Delete</button>
+                        <br />
+                        <Link to={`/edit-car/${item.id}`}>
+                            <a>
+                                Edit 
+                            </a>
+                        </Link>
+                        <br />
+                        <Link to={`/detail-car/${item.id}`}>
+                            <a>
+                                Detail
+                            </a>
+                        </Link>
                     </div>
                 )
             }) : (null)

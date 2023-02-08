@@ -13,7 +13,7 @@ const carReducers = (state = initialState, Action) => {
                 ...initialState,
                 carsData : Action.payload
             }
-        case 'GET_SINGLE_CAR':
+        case 'DETAIL_CAR':
             return {
                 ...initialState,
                 carData : Action.payload
@@ -24,6 +24,11 @@ const carReducers = (state = initialState, Action) => {
                 message: Action.payload
             }
         case 'ADD_NEW_CAR':
+            return {
+                ...initialState,
+                message: Action.payload
+            }
+        case 'EDIT_CAR':
             return {
                 ...initialState,
                 message: Action.payload

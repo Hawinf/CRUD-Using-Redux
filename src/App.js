@@ -9,6 +9,7 @@ import { DiscoveryPage } from './pages/Discovery';
 import { CarList } from './pages/CarList';
 import { CarDetail } from './pages/CarDetail';
 import { AddNewCar } from './pages/AddNewCar';
+import { EditCar } from './pages/EditCar';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/car-list' element={<CarList />} />
             <Route path='/detail-car/:id' element={<CarDetail />} />
             <Route path='/adding-new-car' element={<AddNewCar />} />
+            <Route path='/edit-car/:id' element={<EditCar />} />
         </Route>
         <Route path='/' element={<Home/>} />
         <Route path='/login' element={<Login/>} />
